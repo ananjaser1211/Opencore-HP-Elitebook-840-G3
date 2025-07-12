@@ -22,7 +22,7 @@
 # Supported MacOS Version
 - Sequoia 15.x.x (tested)
 - Require [Heliport](https://github.com/OpenIntelWireless/HeliPort) for WiFi
-- Initial Setup requires Internet via ethernet
+- Initial Setup requires Internet via ethernet if using offline installers
 
 ## Working
 
@@ -30,6 +30,7 @@
 - CPU Power Management
 - Battery Status / Time
 - Intel Wireless via Heliport
+- Intel Bluetooth
 - Ethernet LAN
 - NVMe Storage
 - Realtek Audio & F7/F8 keys
@@ -42,14 +43,12 @@
 - And pretty much everything not listed below
 - DP (& HDMI Adapter)
 - VGA Output
+- Sleep/Wakeup & Instant Wake
+- Screen LID sleep
 
 ## Not Working
 
-- IGPU Power Management (Currently using Host Preemptive)
-- Apple GUC firmware
-- Bluetooth BCM_4350C2
-- Sleep/Wakeup & Instant Wake
-- Screen LID sleep
+- Apple GUC firmware (Currently using Host Preemptive)
 - DRM (No HD playback on Netflix etc.)
 - SDXC Card Reader (Not supported in MacOS Sequoia)
 
@@ -63,6 +62,7 @@
 * Advanced -> System Options -> Check “Virtualization Technology (VTx)”
 * Advanced -> System Options -> Uncheck “Virtualization Technology for Directed I/O (VTd)”
 * Advanced -> Built-In Device Options -> Video memory size -> 64MB or anything higher
+* Advanced -> Wake On LAN ->  Set “Disabled” otherwise sleep will not work
 
 ## OpenCore
 
@@ -75,6 +75,32 @@
 - SSDT-PNLF: Brightness Fix
 - SSDT-USBX: Embedded Controller fix
 - SSDT-XOSI: Trackpad improvements
+- SSDT-GPRW: Instant wake fix
+- SSDT-HP-FixLidSleep: Screen LID Sleep Fix
+
+## Kexts
+
+| Kext                                                                                  | Version | Details | Usage                                                           |
+| ------------------------------------------------------------------------------------- | ------- | ------- | --------------------------------------------------------------- |
+| [Itlwm](https://github.com/OpenIntelWireless/itlwm)                                   | v2.3.0  | Release | Intel Wi-Fi Adapter Kext for macOS                              |
+| [AppleALC](https://github.com/acidanthera/AppleALC)                                   | v1.9.5  | Release | Native macOS HD audio for not officially supported codecs       |
+| [BlueToolFixup](https://github.com/acidanthera/BrcmPatchRAM)                          | v2.7.1  | Release | Monterey Bluetooth Firmware fix-up                              |
+| [ECEnabler](https://github.com/1Revenger1/ECEnabler)                                  | v1.0.6  | Release | Allows reading Embedded Controller fields over 1 byte long      |
+| [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware) | v2.4.0  | Release | Intel Bluetooth Drivers for macOS                               |
+| [IntelBTPatcher](https://github.com/OpenIntelWireless/IntelBluetoothFirmware)         | v2.4.0  | Release | Intel Bluetooth Firmware Uploader                               |
+| [Lilu](https://github.com/acidanthera/Lilu)                                           | v1.7.1  | Release | Arbitrary kext and process patching on macOS                    |
+| [NVMeFix](https://github.com/acidanthera/NVMeFix)                                     | v1.1.3  | Release | Set of patches for the Apple NVMe storage driver                |
+| [IntelMausi](https://github.com/Mieze/RTL8111_driver_for_OS_X)                        | v1.0.8  | Release | Intel Ethernet LAN driver for macOS                             |
+| [RestrictEvents](https://github.com/acidanthera/RestrictEvents)                       | v1.1.6  | Release | Suppresses unwanted notifications in macOS                      |
+| [RTCMemoryFixup](https://github.com/acidanthera/RTCMemoryFixup)                       | v1.0.7  | Release | Emulate some offsets in your CMOS (RTC) memory                  |
+| [SMCBatteryManager](https://github.com/acidanthera/VirtualSMC)                        | v1.3.7  | Release | Battery Management For Laptops                                  |
+| [SMCProcessor](https://github.com/acidanthera/VirtualSMC)                             | v1.3.7  | Release | Improved CPU measurement                                        |
+| [USBMap](https://github.com/USBToolBox/tool)                                          | v1.0    | Gen     | Generated USB Map                                               |
+| [VirtualSMC](https://github.com/acidanthera/VirtualSMC)                               | v1.3.7  | Release | Advanced Apple SMC emulator in the kernel                       |
+| [VoodooPS2Controller](https://github.com/acidanthera/VoodooPS2)                       | v2.3.7  | Release | Controller For various PS2 Gestures                             |
+| [VoodooRMI](https://github.com/VoodooSMBus/VoodooRMI)                                 | v1.4.2  | Release | A port for macOS of Synaptic's RMI Trackpad driver from Linux   |
+| [VoodooSMBUS](https://github.com/VoodooSMBus/VoodooRMI)                               | v3.0    | Release | VoodooRMI Extension for PS2 Trackpad                            |
+| [WhateverGreen](https://github.com/acidanthera/WhateverGreen)                         | v1.7.0  | Release | Various patches necessary for certain ATI/AMD/Intel/Nvidia GPUs |
 
 ## Screenshots
 
@@ -89,6 +115,14 @@
 - Boot to OpenCore and setup your disk in Disk Utility
 - The system is expected to reboot 4-5 times in total.
 
+## Generating your own serial and Editing ROM
+
+Use GenSMBIOS (https://github.com/corpnewt/GenSMBIOS) to generate a serial for MacBookPro13,1
+
+Use Xcode, [ProperTree](https://github.com/corpnewt/ProperTree) or any decent plist editor to manually enter the details in the following sections of the config (as shown in the video): (SystemSerialNumber, MLB, UUID and ROM)
+
+https://user-images.githubusercontent.com/59102649/116117179-3ea51200-a6bc-11eb-8a18-a03f7bb5bf1d.mp4
+
 ## Dualbooting Notes
 
 - To install along side Windows make sure you have a GPT formatted disk, resize your Windows partition using tools such as Easeus Partition Master then while in macOS Disk Utility, make the unallocated space into APFS
@@ -97,13 +131,13 @@
 
 ## Credits
 
-- @GeantW0rld Original Repo author [Suppport](https://www.buymeacoffee.com/geantworld)
+- [@GeantW0rld](https://github.com/GeantW0rld) Original Repo author [Support](https://www.buymeacoffee.com/geantworld)
+- [@TECHNIKVERBOT](https://github.com/TECHNIKVERBOT) for rebuilding EFI + Support
+- [@SkyrilHD](https://github.com/SkyrilHD) for massive help and tips / fixes
 - @1Revenger1 for ECEnabler
 - @acidanthera for bootloader, VirtualSMC, NVMeFix, Lilu and other kexts
-- @Apple for macOS
-- @dortania for guides
 - @itlwm for WiFi & Bluetooth
-- @SkyrilHD for massive help and tips / fixes
-- @TECHNIKVERBOT for Monterey patches
+- @dortania for guides
+- @Apple for macOS
 - @USBToolBox Team for USB mapping
 - @Voodoo Team for TrackPad
