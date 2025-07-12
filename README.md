@@ -92,7 +92,6 @@
 | [NVMeFix](https://github.com/acidanthera/NVMeFix)                                     | v1.1.3  | Release | Set of patches for the Apple NVMe storage driver                |
 | [IntelMausi](https://github.com/Mieze/RTL8111_driver_for_OS_X)                        | v1.0.8  | Release | Intel Ethernet LAN driver for macOS                             |
 | [RestrictEvents](https://github.com/acidanthera/RestrictEvents)                       | v1.1.6  | Release | Suppresses unwanted notifications in macOS                      |
-| [RTCMemoryFixup](https://github.com/acidanthera/RTCMemoryFixup)                       | v1.0.7  | Release | Emulate some offsets in your CMOS (RTC) memory                  |
 | [SMCBatteryManager](https://github.com/acidanthera/VirtualSMC)                        | v1.3.7  | Release | Battery Management For Laptops                                  |
 | [SMCProcessor](https://github.com/acidanthera/VirtualSMC)                             | v1.3.7  | Release | Improved CPU measurement                                        |
 | [USBMap](https://github.com/CorpNewt/USBMap)                                          | v1.0    | Gen     | Generated USB Map                                               |
