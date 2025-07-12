@@ -11,7 +11,7 @@
 | Memory              | 8GB/4GB DDR4 SK Hynix 2133MHz               |
 | SSD                 | Samsung NVME SSD 970 EVO 500GB (PM981)      |
 | HDD                 | Toshiba MQ02ABF050H 500GB                   |
-| Integrated Graphics | Intel® UHD Graphics 520                     |
+| Integrated Graphics | Intel® HD Graphics 520                      |
 | Monitor             | FHD 1920x1080 (14.0 inch)                   |
 | Sound Card          | Conexant CX20724                            |
 | Wireless Card       | Intel® Wireless-AC 8260 802.11b/g/n/ac      |
@@ -26,7 +26,7 @@
 
 ## Working
 
-- Intel UHD 520 Acceleration
+- iGPU acceleration
 - CPU Power Management
 - Battery Status / Time
 - Intel Wireless via Heliport
@@ -49,7 +49,7 @@
 ## Not Working
 
 - Apple GUC firmware (Currently using Host Preemptive)
-- DRM (No HD playback on Netflix etc.)
+- DRM (No HD playback on Netflix etc. using Safari)
 - SDXC Card Reader (Not supported in MacOS Sequoia)
 
 # Bios Settings
@@ -71,7 +71,7 @@
 ## ACPI Patch list
 
 - SSDT-EC: Embedded Controller fix
-- SSDT-PLUG-DRTNIA: Power Management Fix
+- SSDT-PLUG: Power Management Fix
 - SSDT-PNLF: Brightness Fix
 - SSDT-USBX: Embedded Controller fix
 - SSDT-XOSI: Trackpad improvements
@@ -95,7 +95,7 @@
 | [RTCMemoryFixup](https://github.com/acidanthera/RTCMemoryFixup)                       | v1.0.7  | Release | Emulate some offsets in your CMOS (RTC) memory                  |
 | [SMCBatteryManager](https://github.com/acidanthera/VirtualSMC)                        | v1.3.7  | Release | Battery Management For Laptops                                  |
 | [SMCProcessor](https://github.com/acidanthera/VirtualSMC)                             | v1.3.7  | Release | Improved CPU measurement                                        |
-| [USBMap](https://github.com/USBToolBox/tool)                                          | v1.0    | Gen     | Generated USB Map                                               |
+| [USBMap](https://github.com/CorpNewt/USBMap)                                          | v1.0    | Gen     | Generated USB Map                                               |
 | [VirtualSMC](https://github.com/acidanthera/VirtualSMC)                               | v1.3.7  | Release | Advanced Apple SMC emulator in the kernel                       |
 | [VoodooPS2Controller](https://github.com/acidanthera/VoodooPS2)                       | v2.3.7  | Release | Controller For various PS2 Gestures                             |
 | [VoodooRMI](https://github.com/VoodooSMBus/VoodooRMI)                                 | v1.4.2  | Release | A port for macOS of Synaptic's RMI Trackpad driver from Linux   |
