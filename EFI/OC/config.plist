@@ -689,7 +689,7 @@
 				<key>Comment</key>
 				<string>VoodooInput.kext</string>
 				<key>Enabled</key>
-				<true/>
+				<false/>
 				<key>ExecutablePath</key>
 				<string>Contents/MacOS/VoodooInput</string>
 				<key>MaxKernel</key>
@@ -797,7 +797,7 @@
 				<key>Comment</key>
 				<string>VoodooInput.kext</string>
 				<key>Enabled</key>
-				<false/>
+				<true/>
 				<key>ExecutablePath</key>
 				<string>Contents/MacOS/VoodooInput</string>
 				<key>MaxKernel</key>
@@ -1376,7 +1376,7 @@
 			<key>SystemMemoryStatus</key>
 			<string>Auto</string>
 			<key>SystemProductName</key>
-			<string>MacbookPro13,1</string>
+			<string>MacBookPro13,1</string>
 			<key>SystemSerialNumber</key>
 			<string>W00000000001</string>
 			<key>SystemUUID</key>
