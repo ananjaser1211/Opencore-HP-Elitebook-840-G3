@@ -26,7 +26,7 @@
 
 ## Working
 
-- iGPU acceleration
+- iGPU acceleration (using HD 620 device-id for Ventura and newer)
 - CPU Power Management
 - Battery Status / Time
 - Intel Wireless via Heliport
