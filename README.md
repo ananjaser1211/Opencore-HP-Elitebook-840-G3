@@ -7,7 +7,7 @@
 | Specifications      | Detail                                      |
 | ------------------- | ------------------------------------------- |
 | Computer model      | HP Elitebook 840 G3                         |
-| CPU                 | Intel Core i5-6200H                         |
+| CPU                 | Intel Core i5-6200U                         |
 | Memory              | 8GB/4GB DDR4 SK Hynix 2133MHz               |
 | SSD                 | Samsung NVME SSD 970 EVO 500GB (PM981)      |
 | HDD                 | Toshiba MQ02ABF050H 500GB                   |
