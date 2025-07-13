@@ -51,6 +51,7 @@
 - Apple GUC firmware (Currently using Host Preemptive)
 - DRM (No HD playback on Netflix etc. using Safari)
 - SDXC Card Reader (Not supported in MacOS Sequoia)
+- TouchScreen (No fix attempted yet)
 
 # Bios Settings
 * Security -> Intel Software Guard Extensions (SGX) -> Disable
@@ -114,13 +115,16 @@
 - Boot to OpenCore and setup your disk in Disk Utility
 - The system is expected to reboot 4-5 times in total.
 
-## Generating your own serial and Editing ROM
+## Generating your own serial and SMBIos Info
+> This is required to have functional Apple services
 
-Use GenSMBIOS (https://github.com/corpnewt/GenSMBIOS) to generate a serial for MacBookPro13,1
+Use [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) to generate a serial for *MacBookPro13,1*
 
 Use Xcode, [ProperTree](https://github.com/corpnewt/ProperTree) or any decent plist editor to manually enter the details in the following sections of the config (as shown in the video): (SystemSerialNumber, MLB, UUID and ROM)
 
-https://user-images.githubusercontent.com/59102649/116117179-3ea51200-a6bc-11eb-8a18-a03f7bb5bf1d.mp4
+https://github.com/user-attachments/assets/abbf3bc2-af5b-479c-a9a1-886ba14315f9.mp4
+
+or load the config.plist in [OCAuxiliaryTools](https://github.com/ic005k/OCAuxiliaryTools) and have it generate and update the config.
 
 ## Dualbooting Notes
 
