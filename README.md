@@ -51,6 +51,7 @@
 - Apple GUC firmware (Currently using Host Preemptive)
 - DRM (No HD playback on Netflix etc. using Safari)
 - SDXC Card Reader (Not supported in MacOS Sequoia)
+- TouchScreen (No fix attempted yet)
 
 # Bios Settings
 * Security -> Intel Software Guard Extensions (SGX) -> Disable
